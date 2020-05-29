@@ -32,30 +32,61 @@ class App extends Component{
       this.setState({ flowers, clickedFlowerIds, score: clickedFlowerIds.length, status: " "});
 
       for (let i = flowers.length - 1; i > 0; i--){
-        
+        let k = Math.floor(Math.random() * (i + 1));
+        [flowers[i], flowers[k] = [flowers[k], flowers[i]]];
       }
     }
   }
-}
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
+
+  // render a card component for each card object
+  render(){
+    return (
+      <div className="App">
+        <header className="App-header">
+        <h1 className="App-title">Clicky Game</h1>
+        <p className="App-intro">Try not to click the same image twice!
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+        </header>
+        <Score total={this.state.score}
+        goal={8}
+        status={this.state.status} />
+
+        <Wrapper>
+          {this.state.flowers.map(flower =>(
+            <Card
+            shuffleScoreCard={this.shuffleScoreCard}
+            id={flower.id}
+            key={flower.id}
+            image={flower.image}
+            />
+          ))}
+        </Wrapper>
+        <footer>
+
+        </footer>
+      </div>
+    );
+  }
 }
+// function App() {
+//   return (
+//     <div className="App">
+//       <header className="App-header">
+//         <img src={logo} className="App-logo" alt="logo" />
+//         <p>
+//           Edit <code>src/App.js</code> and save to reload.
+//         </p>
+//         <a
+//           className="App-link"
+//           href="https://reactjs.org"
+//           target="_blank"
+//           rel="noopener noreferrer"
+//         >
+//           Learn React
+//         </a>
+//       </header>
+//     </div>
+//   );
+// }
 
 export default App;

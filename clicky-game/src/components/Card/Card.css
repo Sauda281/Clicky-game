@@ -11,13 +11,14 @@
 }
 
 .card{
-    background: skyblue;
+    background: white;
     height: 200px;
-    width: 250px;
+    width:  250px;
     margin: 1rem;
     margin-top: 10px;
     border-radius: 2px;
     position: relative;
     box-shadow: 0 3px 6px #999, 0 3px 6px #999;
     overflow: hidden;
+    display: inline;
 }

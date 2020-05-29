@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import Card from "./components/Card";
 import Wrapper from "./components/Wrapper";
 import Score from "./components/Score";
-import pups from "./cards.json";
+import flowers from "./cards.json";
 import './App.css';
 
 class App extends Component{
   state = {
-    pups,
+    flowers,
     clickedFlowerIds: [],
     score: 0,
     goal: 8,
@@ -31,9 +31,9 @@ class App extends Component{
 
       this.setState({ flowers, clickedFlowerIds, score: clickedFlowerIds.length, status: " "});
 
-      for (let i = flowers.length - 1; i > 0; i--){
+      for (let i = flowers.length - 1; i > 0; i--) {
         let k = Math.floor(Math.random() * (i + 1));
-        [flowers[i], flowers[k] = [flowers[k], flowers[i]]];
+        [flowers[i], flowers[k]] = [flowers[k], flowers[i]];
       }
     }
   }

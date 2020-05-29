@@ -1,0 +1,61 @@
+import React, { Component } from 'react';
+import Card from "./components/Card";
+import Wrapper from "./components/Wrapper";
+import Score from "./components/Score";
+import pups from "./cards.json";
+import './App.css';
+
+class App extends Component{
+  state = {
+    pups,
+    clickedFlowerIds: [],
+    score: 0,
+    goal: 8,
+    status: ""
+  };
+
+  shuffleScoreCard = id => {
+    let clickedFlowerIds = this.state.clickedFlowerIds;
+
+    if(clickedFlowerIds.includes(id)){
+      this.setState({ clickedFlowerIds: [], score: 0, status: "You lost! Click to play again"});
+      return;
+    }else{
+      clickedFlowerIds.push(id)
+
+      if(clickedFlowerIds.length === 8){
+        this.setState({score: 8, status: "Congratulations, you won!. Click to play again!", clickedFlowerIds: []});
+        console.log('You Win');
+        return;
+      }
+
+      this.setState({ flowers, clickedFlowerIds, score: clickedFlowerIds.length, status: " "});
+
+      for (let i = flowers.length - 1; i > 0; i--){
+        
+      }
+    }
+  }
+}
+function App() {
+  return (
+    <div className="App">
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <p>
+          Edit <code>src/App.js</code> and save to reload.
+        </p>
+        <a
+          className="App-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Learn React
+        </a>
+      </header>
+    </div>
+  );
+}
+
+export default App;
